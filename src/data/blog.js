@@ -2,111 +2,112 @@ import dayjs from 'dayjs'
 
 const posts = [
   {
-    slug: 'launching-kyanja-bio',
-    title: 'Launching Kyanja Bio',
+    slug: 'mimosa-pudica-brightening-protocol',
+    title: 'Mimosa Pudica: The Brightening Botanical for Sensitive Skin',
     excerpt:
-      'Learn why we started Kyanja Bio and how we are building a platform to accelerate biological discoveries.',
-    publishedAt: '2024-05-01',
-    author: {
-      name: 'Michael Foster',
-      image:
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    },
+      'How Mimosa Pudica polysaccharides calm redness while supporting even tone when paired with stabilized vitamin C.',
+    publishedAt: '2024-11-05',
+    author: { name: 'Leila Mensah' },
     categories: [
-      { slug: 'company-news', title: 'Company news' },
-      { slug: 'product-updates', title: 'Product updates' },
+      { slug: 'ingredient-science', title: 'Ingredient Science' },
+      { slug: 'skin-health', title: 'Skin Health' },
     ],
-    mainImage:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
+    mainImage: '/images/mimosa-radiance-hero.jpeg',
+    ingredients: ['Mimosa Pudica', 'Vitamin C MAP/SAP', 'Shea Butter'],
     body: [
       {
         type: 'paragraph',
-        text: 'Kyanja Bio was founded to give researchers clearer insight into their data and faster ways to act on it. We are combining intuitive software with practical workflows so labs can move from raw signal to confident decisions without getting stuck in tooling.',
+        text: 'Mimosa Pudica is rich in calming polysaccharides that visibly reduce the look of redness and support barrier repair. When combined with Shea Butter and stabilized vitamin C derivatives, it creates a brightening system that stays gentle enough for twice-daily use.',
       },
       {
         type: 'heading2',
-        text: 'What to expect',
+        text: 'Formulation considerations',
       },
       {
         type: 'paragraph',
-        text: 'Over the coming months we will roll out guided analyses, richer visualizations, and collaboration tools tailored for wet lab teams. Our goal is to help you close the loop between experiments and outcomes.',
-      },
-    ],
-    featured: true,
-  },
-  {
-    slug: 'workflow-efficiency-checklist',
-    title: 'A simple checklist for workflow efficiency',
-    excerpt:
-      'Five small changes that make a big difference when you need reliable results under time pressure.',
-    publishedAt: '2024-04-12',
-    author: {
-      name: 'Amina Patel',
-      image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
-    },
-    categories: [
-      { slug: 'best-practices', title: 'Best practices' },
-    ],
-    mainImage:
-      'https://images.unsplash.com/photo-1519304754480-2b1f61a3ab63?auto=format&fit=crop&w=1200&q=80',
-    body: [
-      {
-        type: 'paragraph',
-        text: 'Small optimizations add up. In our work with partner labs we repeatedly see that time spent on naming conventions, sample tracking, and handoffs saves hours of confusion later.',
+        text: 'Mimosa extracts perform best in pH-balanced emulsions that include barrier-supportive lipids. Pair with MAP/SAP vitamin C to minimize stinging while still delivering radiance and antioxidant support.',
       },
       {
         type: 'list',
         items: [
-          'Write down expected outcomes before you start an experiment to align the team.',
-          'Keep sample metadata in one shared place; avoid sending edits across multiple files.',
-          'Automate notifications for critical steps so nothing waits in an inbox.',
+          'Use 2-5% Mimosa Pudica extract for soothing efficacy.',
+          'Blend with Shea Butter and squalane to cushion the skin barrier.',
+          'Layer under mineral SPF to maintain brightness gains.',
         ],
-      },
-      {
-        type: 'paragraph',
-        text: 'You do not need a complex system to benefit from structure—start with a simple checklist and iterate.',
       },
     ],
     featured: true,
   },
   {
-    slug: 'customer-story-lumina',
-    title: 'How Lumina Labs shortened their analysis cycle',
+    slug: 'niacinamide-dermatology-guidelines',
+    title: 'Niacinamide, MAP/SAP, and Peptides: Dermatology-Grade Brightening',
     excerpt:
-      'The Lumina Labs team used Kyanja Bio to cut their reporting time in half while keeping data quality high.',
-    publishedAt: '2024-03-20',
-    author: {
-      name: 'Michael Foster',
-      image:
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    },
+      'A dermatologist-backed routine that pairs niacinamide with stabilized vitamin C and peptides for resilient luminosity.',
+    publishedAt: '2024-10-22',
+    author: { name: 'Dr. L. Chen' },
     categories: [
-      { slug: 'customer-stories', title: 'Customer stories' },
-      { slug: 'best-practices', title: 'Best practices' },
+      { slug: 'dermatology-guides', title: 'Dermatology Guides' },
+      { slug: 'research-and-development', title: 'Research & Development' },
     ],
-    mainImage:
-      'https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?auto=format&fit=crop&w=1200&q=80',
+    mainImage: '/images/mimosa-radiance-hero.jpeg',
+    ingredients: ['Niacinamide', 'Vitamin C MAP/SAP', 'Peptide Complex'],
     body: [
       {
         type: 'paragraph',
-        text: 'Lumina Labs needed to move faster without sacrificing the quality standards their customers expect. We worked together to map their data flow and highlight where automation would help.',
+        text: 'Niacinamide remains one of the most versatile derm-approved actives. At 5%, it balances oil, supports ceramide synthesis, and pairs well with MAP/SAP vitamin C for even tone. Peptide complexes round out the routine by signaling firmness.',
       },
       {
         type: 'heading3',
-        text: 'Results after four weeks',
+        text: 'AM/PM pairing tips',
+      },
+      {
+        type: 'paragraph',
+        text: 'Use niacinamide and MAP/SAP in the morning under SPF for brightening. At night, pair with peptides and Shea Butter to reinforce elasticity and overnight recovery.',
       },
       {
         type: 'list',
         items: [
-          '50% reduction in manual spreadsheet work.',
-          'Automatic alerts when runs finish processing.',
-          'Shared dashboards for stakeholders who need status without asking.',
+          'Avoid mixing with low-pH L-ascorbic acid to keep sensitivity low.',
+          'Layer a peptide moisturizer after retinoids to cushion the barrier.',
+          'Spot treat discoloration with additional niacinamide serums if needed.',
+        ],
+      },
+    ],
+    featured: true,
+  },
+  {
+    slug: 'barrier-repair-for-retinol-users',
+    title: 'Barrier Repair Rituals for Retinol Users',
+    excerpt:
+      'How Shea Butter, hyaluronic acid, and Mimosa Pudica restore comfort when using retinoids or exfoliants.',
+    publishedAt: '2024-09-14',
+    author: { name: 'Priya Desai' },
+    categories: [
+      { slug: 'skin-health', title: 'Skin Health' },
+      { slug: 'ingredient-science', title: 'Ingredient Science' },
+    ],
+    mainImage: '/images/mimosa-radiance-hero.jpeg',
+    ingredients: ['Shea Butter', 'Hyaluronic Acid', 'Mimosa Pudica', 'Niacinamide'],
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Retinoids deliver transformative results but can disrupt the barrier. Cushion your routine with Shea Butter, hyaluronic acid, and Mimosa Pudica to maintain hydration and calm.',
+      },
+      {
+        type: 'heading2',
+        text: 'Nightly protocol',
+      },
+      {
+        type: 'list',
+        items: [
+          'Apply retinoid on dry skin, then layer Radiance Cream to buffer.',
+          'Add an occlusive step only if extremely dry or during winter.',
+          'Use niacinamide in the morning to reinforce lipid synthesis.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'The team plans to expand their use of Kyanja Bio to additional programs later this year.',
+        text: 'This pairing keeps results on track while keeping sensitivity at bay.',
       },
     ],
   },

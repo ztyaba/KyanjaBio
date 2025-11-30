@@ -14,3 +14,21 @@
     transform: translateX(var(--move-x-to));
   }
 }
+
+@layer base {
+  body {
+    background-color: #F7F4EC;
+    color: #2E4F3D;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}

@@ -1,297 +1,82 @@
-import { Button } from '@/components/button'
-import { Container } from '@/components/container'
-import { Footer } from '@/components/footer'
-import { GradientBackground } from '@/components/gradient'
-import { Link } from '@/components/link'
-import { Navbar } from '@/components/navbar'
-import { Heading, Lead, Subheading } from '@/components/text'
-import {
-  getCategories,
-  getFeaturedPosts,
-  getPosts,
-  getPostsCount,
-} from '@/data/blog'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import {
-  CheckIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpDownIcon,
-  RssIcon,
-} from '@heroicons/react/16/solid'
-import { clsx } from 'clsx'
-import dayjs from 'dayjs'
-import { notFound } from 'next/navigation'
+import FadeInSection from "@/components/FadeInSection"
+import { Container } from "@/components/container"
+import { getCategories, getPosts } from "@/data/blog"
+import Link from "next/link"
 
 export const metadata = {
-  title: 'Blog',
-  description:
-    'Stay informed with product updates, company news, and insights on how to sell smarter at your company.',
+  title: "Botanical Science Journal",
+  description: "Ingredient science, dermatology guides, and research notes from the MimosaShea Radiance™ lab.",
 }
 
-const postsPerPage = 5
-
-async function FeaturedPosts() {
-  let { data: featuredPosts } = await getFeaturedPosts(3)
-
-  if (featuredPosts.length === 0) {
-    return
-  }
+export default async function BlogPage({ searchParams }) {
+  const category = (await searchParams)?.category
+  const { data: categories } = await getCategories()
+  const { data: posts } = await getPosts(0, 20, category)
 
   return (
-    <div className="mt-16 bg-linear-to-t from-gray-100 pb-14">
-      <Container>
-        <h2 className="text-2xl font-medium tracking-tight">Featured</h2>
-        <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {featuredPosts.map((post) => (
-            <div
-              key={post.slug}
-              className="relative flex flex-col rounded-3xl bg-white p-2 shadow-md ring-1 shadow-black/5 ring-black/5"
-            >
-              {post.mainImage && (
-                <img
-                  alt=""
-                  src={post.mainImage}
-                  className="aspect-3/2 w-full rounded-2xl object-cover"
-                />
-              )}
-              <div className="flex flex-1 flex-col p-8">
-                <div className="text-sm/5 text-gray-700">
-                  {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
-                </div>
-                <div className="mt-2 text-base/7 font-medium">
-                  <Link href={`/blog/${post.slug}`}>
-                    <span className="absolute inset-0" />
-                    {post.title}
-                  </Link>
-                </div>
-                <div className="mt-2 flex-1 text-sm/6 text-gray-500">
-                  {post.excerpt}
-                </div>
-                {post.author && (
-                  <div className="mt-6 flex items-center gap-3">
-                    {post.author.image && (
-                      <img
-                        alt=""
-                        src={post.author.image}
-                        className="aspect-square size-6 rounded-full object-cover"
-                      />
-                    )}
-                    <div className="text-sm/5 text-gray-700">
-                      {post.author.name}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </div>
-  )
-}
-
-async function Categories({ selected }) {
-  let { data: categories } = await getCategories()
-
-  if (categories.length === 0) {
-    return
-  }
-
-  return (
-    <div className="flex flex-wrap items-center justify-between gap-2">
-      <Menu>
-        <MenuButton className="flex items-center justify-between gap-2 font-medium">
-          {categories.find(({ slug }) => slug === selected)?.title ||
-            'All categories'}
-          <ChevronUpDownIcon className="size-4 fill-gray-900" />
-        </MenuButton>
-        <MenuItems
-          anchor="bottom start"
-          className="min-w-40 rounded-lg bg-white p-1 shadow-lg ring-1 ring-gray-200 [--anchor-gap:6px] [--anchor-offset:-4px] [--anchor-padding:10px]"
-        >
-          <MenuItem>
+    <div className="space-y-14 pb-20 pt-12">
+      <FadeInSection>
+        <Container className="space-y-4">
+          <p className="text-sm uppercase tracking-[0.14em] text-[#5E4630]">Botanical Science Journal™</p>
+          <h1 className="text-4xl font-semibold">Research-driven skincare stories</h1>
+          <p className="text-[#5E4630]">
+            Ingredient Science · Dermatology Guides · Research & Development · Skin Health
+          </p>
+          <div className="flex flex-wrap gap-3 pt-3">
             <Link
               href="/blog"
-              data-selected={selected === undefined ? true : undefined}
-              className="group grid grid-cols-[1rem_1fr] items-center gap-2 rounded-md px-2 py-1 data-focus:bg-gray-950/5"
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${!category ? 'border-[#D9B56C] bg-[#F7F4EC] text-[#2E4F3D]' : 'border-[#D9B56C]/40 text-[#2E4F3D]'}`}
             >
-              <CheckIcon className="hidden size-4 group-data-selected:block" />
-              <p className="col-start-2 text-sm/6">All categories</p>
+              All topics
             </Link>
-          </MenuItem>
-          {categories.map((category) => (
-            <MenuItem key={category.slug}>
+            {categories.map((cat) => (
               <Link
-                href={`/blog?category=${category.slug}`}
-                data-selected={category.slug === selected ? true : undefined}
-                className="group grid grid-cols-[16px_1fr] items-center gap-2 rounded-md px-2 py-1 data-focus:bg-gray-950/5"
+                key={cat.slug}
+                href={`/blog?category=${cat.slug}`}
+                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                  category === cat.slug
+                    ? 'border-[#D9B56C] bg-[#F7F4EC] text-[#2E4F3D]'
+                    : 'border-[#D9B56C]/40 text-[#2E4F3D] hover:border-[#D9B56C]'
+                }`}
               >
-                <CheckIcon className="hidden size-4 group-data-selected:block" />
-                <p className="col-start-2 text-sm/6">{category.title}</p>
+                {cat.title}
               </Link>
-            </MenuItem>
-          ))}
-        </MenuItems>
-      </Menu>
-      <Button variant="outline" href="/blog/feed.xml" className="gap-1">
-        <RssIcon className="size-4" />
-        RSS Feed
-      </Button>
-    </div>
-  )
-}
+            ))}
+          </div>
+        </Container>
+      </FadeInSection>
 
-async function Posts({ page, category }) {
-  let { data: posts } = await getPosts(
-    (page - 1) * postsPerPage,
-    page * postsPerPage,
-    category,
-  )
-
-  if (posts.length === 0 && (page > 1 || category)) {
-    notFound()
-  }
-
-  if (posts.length === 0) {
-    return <p className="mt-6 text-gray-500">No posts found.</p>
-  }
-
-  return (
-    <div className="mt-6">
-      {posts.map((post) => (
-        <div
-          key={post.slug}
-          className="relative grid grid-cols-1 border-b border-b-gray-100 py-10 first:border-t first:border-t-gray-200 max-sm:gap-3 sm:grid-cols-3"
-        >
-          <div>
-            <div className="text-sm/5 max-sm:text-gray-700 sm:font-medium">
-              {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
-            </div>
-            {post.author && (
-              <div className="mt-2.5 flex items-center gap-3">
-                {post.author.image && (
-                  <img
-                    alt=""
-                    src={post.author.image}
-                    className="aspect-square size-6 rounded-full object-cover"
-                  />
-                )}
-                <div className="text-sm/5 text-gray-700">
-                  {post.author.name}
+      <FadeInSection>
+        <Container className="grid gap-8 lg:grid-cols-3">
+          {posts.map((post) => (
+            <article
+              key={post.slug}
+              className="flex h-full flex-col rounded-3xl bg-white/70 p-5 shadow-sm ring-1 ring-[#D9B56C]/30"
+            >
+              {post.mainImage && (
+                <div className="overflow-hidden rounded-2xl">
+                  <img src={post.mainImage} alt="" className="h-44 w-full object-cover" />
+                </div>
+              )}
+              <div className="flex flex-1 flex-col gap-3 pt-4">
+                <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5E4630]">
+                  {post.categories?.map((cat) => (
+                    <span key={cat.slug} className="rounded-full bg-[#F7F4EC] px-3 py-1">{cat.title}</span>
+                  ))}
+                </div>
+                <h2 className="text-xl font-semibold text-[#2E4F3D]">
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                </h2>
+                <p className="text-sm text-[#5E4630]">{post.excerpt}</p>
+                <div className="mt-auto flex items-center justify-between text-xs text-[#5E4630]">
+                  <span>{post.author?.name}</span>
+                  <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
                 </div>
               </div>
-            )}
-          </div>
-          <div className="sm:col-span-2 sm:max-w-2xl">
-            <h2 className="text-sm/5 font-medium">{post.title}</h2>
-            <p className="mt-3 text-sm/6 text-gray-500">{post.excerpt}</p>
-            <div className="mt-4">
-              <Link
-                href={`/blog/${post.slug}`}
-                className="flex items-center gap-1 text-sm/5 font-medium"
-              >
-                <span className="absolute inset-0" />
-                Read more
-                <ChevronRightIcon className="size-4 fill-gray-400" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      ))}
+            </article>
+          ))}
+        </Container>
+      </FadeInSection>
     </div>
-  )
-}
-
-async function Pagination({ page, category }) {
-  function url(page) {
-    let params = new URLSearchParams()
-
-    if (category) params.set('category', category)
-    if (page > 1) params.set('page', page.toString())
-
-    return params.size !== 0 ? `/blog?${params.toString()}` : '/blog'
-  }
-
-  let totalPosts = (await getPostsCount(category)).data
-  let hasPreviousPage = page - 1
-  let previousPageUrl = hasPreviousPage ? url(page - 1) : undefined
-  let hasNextPage = page * postsPerPage < totalPosts
-  let nextPageUrl = hasNextPage ? url(page + 1) : undefined
-  let pageCount = Math.ceil(totalPosts / postsPerPage)
-
-  if (pageCount < 2) {
-    return
-  }
-
-  return (
-    <div className="mt-6 flex items-center justify-between gap-2">
-      <Button
-        variant="outline"
-        href={previousPageUrl}
-        disabled={!previousPageUrl}
-      >
-        <ChevronLeftIcon className="size-4" />
-        Previous
-      </Button>
-      <div className="flex gap-2 max-sm:hidden">
-        {Array.from({ length: pageCount }, (_, i) => (
-          <Link
-            key={i + 1}
-            href={url(i + 1)}
-            data-active={i + 1 === page ? true : undefined}
-            className={clsx(
-              'size-7 rounded-lg text-center text-sm/7 font-medium',
-              'data-hover:bg-gray-100',
-              'data-active:shadow-sm data-active:ring-1 data-active:ring-black/10',
-              'data-active:data-hover:bg-gray-50',
-            )}
-          >
-            {i + 1}
-          </Link>
-        ))}
-      </div>
-      <Button variant="outline" href={nextPageUrl} disabled={!nextPageUrl}>
-        Next
-        <ChevronRightIcon className="size-4" />
-      </Button>
-    </div>
-  )
-}
-
-export default async function Blog({ searchParams }) {
-  let params = await searchParams
-  let page =
-    'page' in params
-      ? typeof params.page === 'string' && parseInt(params.page) > 1
-        ? parseInt(params.page)
-        : notFound()
-      : 1
-
-  let category =
-    typeof params.category === 'string' ? params.category : undefined
-
-  return (
-    <main className="overflow-hidden">
-      <GradientBackground />
-      <Container>
-        <Navbar />
-        <Subheading className="mt-16">Blog</Subheading>
-        <Heading as="h1" className="mt-2">
-          What’s happening at Radiant.
-        </Heading>
-        <Lead className="mt-6 max-w-3xl">
-          Stay informed with product updates, company news, and insights on how
-          to sell smarter at your company.
-        </Lead>
-      </Container>
-      {page === 1 && !category && <FeaturedPosts />}
-      <Container className="mt-16 pb-24">
-        <Categories selected={category} />
-        <Posts page={page} category={category} />
-        <Pagination page={page} category={category} />
-      </Container>
-      <Footer />
-    </main>
   )
 }

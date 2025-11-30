@@ -6,12 +6,12 @@ export async function GET(req) {
   let siteUrl = new URL(req.url).origin
 
   let feed = new Feed({
-    title: 'The Radiant Blog',
+    title: 'Botanical Science Journal',
     description:
-      'Stay informed with product updates, company news, and insights on how to sell smarter at your company.',
+      'Ingredient science, dermatology guides, and research updates from the MimosaShea Radiance™ laboratory.',
     author: {
-      name: 'Michael Foster',
-      email: 'michael.foster@example.com',
+      name: 'MimosaShea Radiance™ Team',
+      email: 'care@mimosashea.com',
     },
     id: siteUrl,
     link: siteUrl,
