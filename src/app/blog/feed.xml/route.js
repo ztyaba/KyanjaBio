@@ -1,5 +1,4 @@
-import { image } from '@/sanity/image'
-import { getPostsForFeed } from '@/sanity/queries'
+import { getPostsForFeed } from '@/data/blog'
 import { Feed } from 'feed'
 import assert from 'node:assert'
 
@@ -42,13 +41,7 @@ export async function GET(req) {
       id: post.slug,
       link: `${siteUrl}/blog/${post.slug}`,
       content: post.excerpt,
-      image: post.mainImage
-        ? image(post.mainImage)
-            .size(1200, 800)
-            .format('jpg')
-            .url()
-            .replaceAll('&', '&amp;')
-        : undefined,
+      image: post.mainImage?.replaceAll('&', '&amp;'),
       author: post.author?.name ? [{ name: post.author.name }] : [],
       contributor: post.author?.name ? [{ name: post.author.name }] : [],
       date: new Date(post.publishedAt),
