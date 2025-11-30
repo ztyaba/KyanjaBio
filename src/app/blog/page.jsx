@@ -5,13 +5,12 @@ import { GradientBackground } from '@/components/gradient'
 import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
-import { image } from '@/sanity/image'
 import {
   getCategories,
   getFeaturedPosts,
   getPosts,
   getPostsCount,
-} from '@/sanity/queries'
+} from '@/data/blog'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import {
   CheckIcon,
@@ -51,8 +50,8 @@ async function FeaturedPosts() {
             >
               {post.mainImage && (
                 <img
-                  alt={post.mainImage.alt || ''}
-                  src={image(post.mainImage).size(1170, 780).url()}
+                  alt=""
+                  src={post.mainImage}
                   className="aspect-3/2 w-full rounded-2xl object-cover"
                 />
               )}
@@ -74,7 +73,7 @@ async function FeaturedPosts() {
                     {post.author.image && (
                       <img
                         alt=""
-                        src={image(post.author.image).size(64, 64).url()}
+                        src={post.author.image}
                         className="aspect-square size-6 rounded-full object-cover"
                       />
                     )}
@@ -174,7 +173,7 @@ async function Posts({ page, category }) {
                 {post.author.image && (
                   <img
                     alt=""
-                    src={image(post.author.image).width(64).height(64).url()}
+                    src={post.author.image}
                     className="aspect-square size-6 rounded-full object-cover"
                   />
                 )}
