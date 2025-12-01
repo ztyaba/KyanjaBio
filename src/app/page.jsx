@@ -38,18 +38,46 @@ function Hero() {
           }
         />
         <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
-          <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
-            Close every deal.
-          </h1>
-          <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-            Radiant helps you sell more by revealing sensitive information about
-            your customers.
-          </p>
-          <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
-            <Button href="#">Get started</Button>
-            <Button variant="secondary" href="/pricing">
-              See pricing
-            </Button>
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-700">Limited release</p>
+              <h1 className="mt-6 font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
+                Mimosa Radiance.
+              </h1>
+              <p className="mt-8 max-w-xl text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
+                A luminous blend of vitamin-packed botanicals and adaptive peptides that wraps your skin in a soft-focus glow.
+              </p>
+              <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
+                <Button href="#">Shop the ritual</Button>
+                <Button variant="secondary" href="#">
+                  Discover ingredients
+                </Button>
+              </div>
+              <dl className="mt-12 grid grid-cols-1 gap-6 text-sm font-semibold text-gray-950 sm:grid-cols-3">
+                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                  <dt className="text-sm/6 text-gray-600">Dermatologist tested</dt>
+                  <dd className="mt-1 text-lg">Clinically gentle</dd>
+                </div>
+                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                  <dt className="text-sm/6 text-gray-600">Finish</dt>
+                  <dd className="mt-1 text-lg">Radiant, non-greasy</dd>
+                </div>
+                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                  <dt className="text-sm/6 text-gray-600">Fragrance</dt>
+                  <dd className="mt-1 text-lg">Mimosa + neroli</dd>
+                </div>
+              </dl>
+            </div>
+            <div className="relative lg:col-span-6">
+              <div className="absolute inset-0 -z-10 rounded-4xl bg-gradient-to-br from-fuchsia-100 via-white to-amber-50" />
+              <div className="overflow-hidden rounded-4xl shadow-xl shadow-fuchsia-100 ring-1 ring-black/5 ring-inset">
+                <img
+                  src="/images/mimosa-radiance-hero.jpeg"
+                  alt="Mimosa Radiance serum bottle with soft glow"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </Container>
