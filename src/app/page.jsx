@@ -1,20 +1,20 @@
+'use client'
+
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
-import { Keyboard } from '@/components/keyboard'
 import { Link } from '@/components/link'
 import { LinkedAvatars } from '@/components/linked-avatars'
 import { LogoCloud } from '@/components/logo-cloud'
-import { LogoCluster } from '@/components/logo-cluster'
 import { LogoTimeline } from '@/components/logo-timeline'
-import { Map } from '@/components/map'
 import { Navbar } from '@/components/navbar'
-import { Screenshot } from '@/components/screenshot'
 import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
+import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { useEffect, useRef, useState } from 'react'
 
 export const metadata = {
   description:
@@ -85,80 +85,108 @@ function Hero() {
   )
 }
 
-function FeatureSection() {
+const ingredientFeatures = [
+  {
+    name: 'Shea Butter (Unrefined)',
+    description:
+      'Deeply moisturizes and repairs the skin barrier using natural fatty acids and vitamins A & E.',
+    icon: CloudArrowUpIcon,
+  },
+  {
+    name: 'Mimosa Flower Extract',
+    description: 'Brightens, soothes irritation, and reduces dullness for a natural glow.',
+    icon: LockClosedIcon,
+  },
+  {
+    name: 'Vitamin C (Ascorbyl Glucoside)',
+    description: 'Boosts luminosity, fades uneven tone, and provides antioxidant protection.',
+    icon: ServerIcon,
+  },
+]
+
+function FadeInSection({ children, className }) {
+  const ref = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
-    <div className="overflow-hidden">
-      <Container className="pb-24">
-        <Heading as="h2" className="max-w-3xl">
-          A snapshot of your entire sales pipeline.
-        </Heading>
-        <Screenshot
-          width={1216}
-          height={768}
-          src="/screenshots/app.png"
-          className="mt-16 h-144 sm:h-auto sm:w-304"
-        />
-      </Container>
+    <div
+      ref={ref}
+      className={[
+        'transition duration-700 ease-out',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      {children}
     </div>
   )
 }
 
-function BentoSection() {
+function IngredientSection() {
   return (
-    <Container>
-      <Subheading>Sales</Subheading>
-      <Heading as="h3" className="mt-2 max-w-3xl">
-        Know more about your customers than they do.
-      </Heading>
-
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-        <BentoCard
-          eyebrow="Insight"
-          title="Get perfect clarity"
-          description="Radiant uses social engineering to build a detailed financial picture of your leads. Know their budget, compensation package, social security number, and more."
-          graphic={
-            <div className="h-80 bg-[url(/screenshots/profile.png)] bg-size-[1000px_560px] bg-position-[left_-109px_top_-112px] bg-no-repeat" />
-          }
-          fade={['bottom']}
-          className="max-lg:rounded-t-4xl lg:col-span-3 lg:rounded-tl-4xl"
-        />
-        <BentoCard
-          eyebrow="Analysis"
-          title="Undercut your competitors"
-          description="With our advanced data mining, you’ll know which companies your leads are talking to and exactly how much they’re being charged."
-          graphic={
-            <div className="absolute inset-0 bg-[url(/screenshots/competitors.png)] bg-size-[1100px_650px] bg-position-[left_-38px_top_-73px] bg-no-repeat" />
-          }
-          fade={['bottom']}
-          className="lg:col-span-3 lg:rounded-tr-4xl"
-        />
-        <BentoCard
-          eyebrow="Speed"
-          title="Built for power users"
-          description="It’s never been faster to cold email your entire contact list using our streamlined keyboard shortcuts."
-          graphic={
-            <div className="flex size-full pt-10 pl-10">
-              <Keyboard highlighted={['LeftCommand', 'LeftShift', 'D']} />
+    <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
+      <Container>
+        <div className="mx-auto max-w-6xl rounded-4xl bg-white/70 p-6 shadow-xl shadow-indigo-100 ring-1 ring-black/5 sm:p-10">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:gap-y-16 lg:grid-cols-2 lg:items-center">
+            <div className="flex items-stretch justify-start lg:order-first">
+              <div className="w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-lg shadow-indigo-100 ring-1 ring-black/5">
+                <img
+                  alt="MimosaShea Radiance ingredients showcase"
+                  src="/images/ingredients-showcase.png"
+                  width={2432}
+                  height={1442}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
-          }
-          className="lg:col-span-2 lg:rounded-bl-4xl"
-        />
-        <BentoCard
-          eyebrow="Source"
-          title="Get the furthest reach"
-          description="Bypass those inconvenient privacy laws to source leads from the most unexpected places."
-          graphic={<LogoCluster />}
-          className="lg:col-span-2"
-        />
-        <BentoCard
-          eyebrow="Limitless"
-          title="Sell globally"
-          description="Radiant helps you sell in locations currently under international embargo."
-          graphic={<Map />}
-          className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl"
-        />
-      </div>
-    </Container>
+            <div className="lg:ml-auto lg:max-w-xl lg:pt-6 lg:pl-4">
+              <p className="text-base font-semibold text-indigo-600">Ingredients that matter</p>
+              <Heading as="h2" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
+                MimosaShea Radiance: Nature’s Most Potent Blend
+              </Heading>
+              <p className="mt-6 text-lg/8 text-gray-600">
+                Our formula blends clinically-backed botanical extracts with nutrient-dense natural oils to deliver visible radiance. Each ingredient plays a targeted role—hydration, firmness, brightness, and barrier repair—working together to create a luxurious daily ritual.
+              </p>
+              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+                {ingredientFeatures.map((feature) => (
+                  <div key={feature.name} className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-950">
+                      <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
+                      {feature.name}
+                    </dt>{' '}
+                    <dd className="inline text-gray-600">{feature.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
   )
 }
 
@@ -220,19 +248,28 @@ function DarkBentoSection() {
 export default function Home() {
   return (
     <div className="overflow-hidden">
-      <Hero />
+      <FadeInSection>
+        <Hero />
+      </FadeInSection>
       <main>
-        <Container className="mt-10">
-          <LogoCloud />
-        </Container>
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
-          <FeatureSection />
-          <BentoSection />
-        </div>
-        <DarkBentoSection />
+        <FadeInSection>
+          <Container className="mt-10">
+            <LogoCloud />
+          </Container>
+        </FadeInSection>
+        <FadeInSection>
+          <IngredientSection />
+        </FadeInSection>
+        <FadeInSection>
+          <DarkBentoSection />
+        </FadeInSection>
       </main>
-      <Testimonials />
-      <Footer />
+      <FadeInSection>
+        <Testimonials />
+      </FadeInSection>
+      <FadeInSection>
+        <Footer />
+      </FadeInSection>
     </div>
   )
 }
