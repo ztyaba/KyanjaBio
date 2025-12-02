@@ -1,3 +1,5 @@
+'use client'
+
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
@@ -12,6 +14,7 @@ import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { useEffect, useRef, useState } from 'react'
 
 export const metadata = {
   description:
@@ -101,10 +104,85 @@ const ingredientFeatures = [
   },
 ]
 
+function FadeInSection({ children, className }) {
+  const ref = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={[
+        'transition duration-700 ease-out',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      {children}
+    </div>
+  )
+}
+
 function IngredientSection() {
   return (
     <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
       <Container>
+        <div className="mx-auto max-w-6xl rounded-4xl bg-white/70 p-6 shadow-xl shadow-indigo-100 ring-1 ring-black/5 sm:p-10">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:gap-y-16 lg:grid-cols-2 lg:items-center">
+            <div className="flex items-stretch justify-start lg:order-first">
+              <div className="w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-lg shadow-indigo-100 ring-1 ring-black/5">
+                <img
+                  alt="MimosaShea Radiance ingredients showcase"
+                  src="/images/ingredients-showcase.png"
+                  width={2432}
+                  height={1442}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="lg:ml-auto lg:max-w-xl lg:pt-6 lg:pl-4">
+              <p className="text-base font-semibold text-indigo-600">Ingredients that matter</p>
+              <Heading as="h2" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
+                MimosaShea Radiance: Nature’s Most Potent Blend
+              </Heading>
+              <p className="mt-6 text-lg/8 text-gray-600">
+                Our formula blends clinically-backed botanical extracts with nutrient-dense natural oils to deliver visible radiance. Each ingredient plays a targeted role—hydration, firmness, brightness, and barrier repair—working together to create a luxurious daily ritual.
+              </p>
+              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+                {ingredientFeatures.map((feature) => (
+                  <div key={feature.name} className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-950">
+                      <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
+                      {feature.name}
+                    </dt>{' '}
+                    <dd className="inline text-gray-600">{feature.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:grid-cols-2">
           <div className="lg:ml-auto lg:pt-6 lg:pl-8">
             <div className="lg:max-w-xl">
@@ -201,16 +279,33 @@ function DarkBentoSection() {
 export default function Home() {
   return (
     <div className="overflow-hidden">
-      <Hero />
+      <FadeInSection>
+        <Hero />
+      </FadeInSection>
       <main>
+        <FadeInSection>
+          <Container className="mt-10">
+            <LogoCloud />
+          </Container>
+        </FadeInSection>
+        <FadeInSection>
+          <IngredientSection />
+        </FadeInSection>
+        <FadeInSection>
+          <DarkBentoSection />
+        </FadeInSection>
         <Container className="mt-10">
           <LogoCloud />
         </Container>
         <IngredientSection />
         <DarkBentoSection />
       </main>
-      <Testimonials />
-      <Footer />
+      <FadeInSection>
+        <Testimonials />
+      </FadeInSection>
+      <FadeInSection>
+        <Footer />
+      </FadeInSection>
     </div>
   )
 }
