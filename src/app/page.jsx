@@ -16,11 +16,6 @@ import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 import { useEffect, useRef, useState } from 'react'
 
-export const metadata = {
-  description:
-    'Radiant helps you sell more by revealing sensitive information about your customers.',
-}
-
 function Hero() {
   return (
     <div className="relative">
@@ -183,37 +178,6 @@ function IngredientSection() {
                 ))}
               </dl>
             </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:grid-cols-2">
-          <div className="lg:ml-auto lg:pt-6 lg:pl-8">
-            <div className="lg:max-w-xl">
-              <p className="text-base font-semibold text-indigo-600">Ingredients that matter</p>
-              <Heading as="h2" className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
-                MimosaShea Radiance: Nature’s Most Potent Blend
-              </Heading>
-              <p className="mt-6 text-lg/8 text-gray-600">
-                Our formula blends clinically-backed botanical extracts with nutrient-dense natural oils to deliver visible radiance. Each ingredient plays a targeted role—hydration, firmness, brightness, and barrier repair—working together to create a luxurious daily ritual.
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
-                {ingredientFeatures.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-gray-950">
-                      <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
-                      {feature.name}
-                    </dt>{' '}
-                    <dd className="inline text-gray-600">{feature.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-          <div className="flex items-start justify-start lg:order-first">
-            <img
-              alt="MimosaShea Radiance ingredients showcase"
-              src="/images/ingredients-showcase.png"
-              width={2432}
-              height={1442}
-              className="w-full max-w-xl rounded-3xl bg-white shadow-xl shadow-indigo-100 ring-1 ring-black/5"
-            />
           </div>
         </div>
       </Container>
