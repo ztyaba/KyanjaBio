@@ -25,6 +25,11 @@ export function Logo({ className }) {
       className={clsx(className, 'inline-flex overflow-visible')}
     >
       <Image
+        src="/images/logo2.png"
+        alt="Radiant logo"
+        width={240}
+        height={48}
+        className="h-12 w-auto"
         src="/images/logo.png"
         alt="Radiant logo"
         width={180}
