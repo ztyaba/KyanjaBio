@@ -30,6 +30,11 @@ export function Logo({ className }) {
         width={240}
         height={48}
         className="h-12 w-auto"
+        src="/images/logo.png"
+        alt="Radiant logo"
+        width={180}
+        height={48}
+        className="h-full w-auto"
         priority={false}
       />
     </motion.div>
