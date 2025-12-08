@@ -14,3 +14,18 @@
     transform: translateX(var(--move-x-to));
   }
 }
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.8s ease-out both;
+}
