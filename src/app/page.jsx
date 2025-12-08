@@ -181,6 +181,107 @@ function IngredientSection() {
   )
 }
 
+function IngredientDetailSection() {
+  return (
+    <div className="bg-gradient-to-b from-white via-gray-50 to-gray-100 py-28 sm:py-32">
+      <Container className="max-w-6xl lg:max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center lg:max-w-5xl">
+          <p className="text-base/7 font-semibold text-indigo-600">Our Ingredients</p>
+          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
+            A science-backed botanical formula for deeply nourished, radiant skin
+          </h2>
+          <p className="mt-6 text-lg/8 text-gray-600">
+            MimosaShea blends traditional African shea butter craftsmanship with modern skincare science. Our formula pairs
+            nutrient-rich botanicals, vitamins, peptides, and advanced hydrators to brighten, soothe, and strengthen the skin
+            barrier — naturally and effectively.
+          </p>
+        </div>
+
+        <section className="mt-16 grid grid-cols-1 gap-14 lg:mt-20 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-16">
+          <div className="order-2 space-y-6 text-base/7 text-gray-600 lg:order-1 lg:max-w-xl">
+            <h3 className="text-2xl font-semibold tracking-tight text-pretty text-gray-950">Why Our Formula Works</h3>
+            <p>
+              At the core of our blend is <span className="font-semibold text-gray-950">Mimosa Pudica Extract</span>, a botanical
+              known for its calming, anti-inflammatory properties that help reduce dark marks and support skin repair. It is
+              complemented by <span className="font-semibold text-gray-950">unrefined Shea Butter</span>, naturally rich in
+              vitamins A &amp; E and essential fatty acids that restore softness, elasticity, and long-lasting moisture.
+            </p>
+            <p>
+              To brighten and refine the complexion, we use a synergistic trio of
+              <span className="font-semibold text-gray-950"> Niacinamide</span>,
+              <span className="font-semibold text-gray-950"> Vitamin C (MAP/SAP)</span>, and
+              <span className="font-semibold text-gray-950"> Hibiscus Extract</span>, supporting collagen production, even tone,
+              and gentle renewal. Deep hydration is delivered through
+              <span className="font-semibold text-gray-950"> Hyaluronic Acid</span>,
+              <span className="font-semibold text-gray-950"> Aloe Vera</span>,
+              <span className="font-semibold text-gray-950"> Glycerin</span>,
+              <span className="font-semibold text-gray-950"> Sodium PCA</span>, and
+              <span className="font-semibold text-gray-950"> Panthenol</span> — a powerful moisture-locking system. A peptide
+              complex enhances firmness, while Vitamin E defends against free radicals for healthy, resilient skin.
+            </p>
+          </div>
+
+          <div className="order-1 lg:order-2 lg:row-span-2">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:gap-6">
+              {[1, 2, 3, 4].map((index) => (
+                <div
+                  key={index}
+                  className="group aspect-square overflow-hidden rounded-3xl bg-white shadow-lg shadow-indigo-100 ring-1 ring-black/5"
+                >
+                  <img
+                    src={`/images/image${index}.jpeg`}
+                    alt={`Ingredient visual ${index}`}
+                    className="size-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="order-3">
+            <p className="text-base/7 font-semibold text-gray-600">Ingredient Performance</p>
+            <hr className="mt-4 border-t border-dashed border-gray-200" />
+
+            <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+              <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
+                <dt className="text-sm/6 text-gray-500">Hydration Power</dt>
+                <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
+                  <span>1000×</span>
+                </dd>
+                <dt className="text-sm/6 text-gray-500">Moisture-binding capacity of Hyaluronic Acid</dt>
+              </div>
+
+              <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
+                <dt className="text-sm/6 text-gray-500">Skin Brightening</dt>
+                <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
+                  <span>20%</span>
+                </dd>
+                <dt className="text-sm/6 text-gray-500">Niacinamide + Vitamin C clarity improvement</dt>
+              </div>
+
+              <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
+                <dt className="text-sm/6 text-gray-500">Barrier Support</dt>
+                <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
+                  <span>67%</span>
+                </dd>
+                <dt className="text-sm/6 text-gray-500">Increase in natural ceramides (Niacinamide)</dt>
+              </div>
+
+              <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
+                <dt className="text-sm/6 text-gray-500">Elasticity Boost</dt>
+                <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
+                  <span>12%</span>
+                </dd>
+                <dt className="text-sm/6 text-gray-500">Peptide complex support for firmness</dt>
+              </div>
+            </dl>
+          </div>
+        </section>
+      </Container>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <div className="overflow-hidden">
@@ -190,6 +291,9 @@ export default function Home() {
       <main>
         <FadeInSection>
           <IngredientSection />
+        </FadeInSection>
+        <FadeInSection>
+          <IngredientDetailSection />
         </FadeInSection>
       </main>
       <FadeInSection>
