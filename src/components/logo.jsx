@@ -27,9 +27,9 @@ export function Logo({ className }) {
       <Image
         src="/images/logo5.svg"
         alt="Radiant logo"
-        width={267}
-        height={80}
-        className="h-[80px] w-auto"
+        width={334}
+        height={100}
+        className="h-[100px] w-auto"
       />
     </motion.div>
   )
