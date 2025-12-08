@@ -102,10 +102,7 @@ function FadeInSection({ children, className }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-            observer.unobserve(entry.target)
-          }
+          setIsVisible(entry.isIntersecting)
         })
       },
       { threshold: 0.15 }
