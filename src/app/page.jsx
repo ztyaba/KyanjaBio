@@ -4,6 +4,7 @@ import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
+import { AnimatedNumber } from '@/components/animated-number'
 import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Testimonials } from '@/components/testimonials'
@@ -246,7 +247,7 @@ function IngredientDetailSection() {
               <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
                 <dt className="text-sm/6 text-gray-500">Hydration Power</dt>
                 <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
-                  <span>1000×</span>
+                  <AnimatedNumber start={1} end={1000} />×
                 </dd>
                 <dt className="text-sm/6 text-gray-500">Moisture-binding capacity of Hyaluronic Acid</dt>
               </div>
@@ -254,7 +255,7 @@ function IngredientDetailSection() {
               <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
                 <dt className="text-sm/6 text-gray-500">Skin Brightening</dt>
                 <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
-                  <span>20%</span>
+                  <AnimatedNumber start={0} end={20} />%
                 </dd>
                 <dt className="text-sm/6 text-gray-500">Niacinamide + Vitamin C clarity improvement</dt>
               </div>
@@ -262,7 +263,7 @@ function IngredientDetailSection() {
               <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
                 <dt className="text-sm/6 text-gray-500">Barrier Support</dt>
                 <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
-                  <span>67%</span>
+                  <AnimatedNumber start={0} end={67} />%
                 </dd>
                 <dt className="text-sm/6 text-gray-500">Increase in natural ceramides (Niacinamide)</dt>
               </div>
@@ -270,7 +271,7 @@ function IngredientDetailSection() {
               <div className="flex flex-col gap-y-2 rounded-2xl bg-white/70 p-4 shadow-sm shadow-indigo-50 ring-1 ring-black/5">
                 <dt className="text-sm/6 text-gray-500">Elasticity Boost</dt>
                 <dd className="order-first text-5xl font-semibold tracking-tight text-gray-950 sm:text-6xl">
-                  <span>12%</span>
+                  <AnimatedNumber start={0} end={12} />%
                 </dd>
                 <dt className="text-sm/6 text-gray-500">Peptide complex support for firmness</dt>
               </div>
