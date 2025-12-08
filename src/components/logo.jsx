@@ -39,7 +39,7 @@ export function Logo({ className }) {
         alt="Radiant logo"
         width={180}
         height={48}
-        className="h-full w-auto"
+        className="h-full w-auto mix-blend-multiply opacity-90"
         priority={false}
       />
     </motion.div>
