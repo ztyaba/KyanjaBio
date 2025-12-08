@@ -11,7 +11,7 @@ import { useEffect, useRef } from 'react'
 
 export function AnimatedNumber({ start, end, decimals = 0 }) {
   let ref = useRef(null)
-  let isInView = useInView(ref, { once: true, amount: 0.5 })
+  let isInView = useInView(ref, { once: false, amount: 0.5 })
 
   let value = useMotionValue(start)
   let spring = useSpring(value, { damping: 30, stiffness: 100 })
