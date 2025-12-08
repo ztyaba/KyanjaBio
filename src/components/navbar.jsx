@@ -83,7 +83,7 @@ export function Navbar({ banner }) {
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
               <Link href="/" title="Home">
-                <Logo className="h-[60px]" />
+                <Logo className="h-[80px]" />
               </Link>
             </PlusGridItem>
             {banner && (
