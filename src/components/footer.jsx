@@ -13,8 +13,6 @@ function CallToAction() {
         <Subheading>Get started</Subheading>
         <p className="mt-6 text-3xl font-medium tracking-tight text-gray-950 sm:text-5xl">
           Ready for calmer brighter skin?
-          <br />
-          Transform your routine with science-backed formulas.
         </p>
       </hgroup>
       <p className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-500">
