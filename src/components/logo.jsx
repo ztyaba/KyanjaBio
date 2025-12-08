@@ -25,22 +25,11 @@ export function Logo({ className }) {
       className={clsx(className, 'inline-flex overflow-visible')}
     >
       <Image
-        src="/images/logo3.5.png"
+        src="/images/logo5.svg"
         alt="Radiant logo"
-        width={280}
-        height={56}
-        className="h-14 w-auto"
-        src="/images/logo2.png"
-        alt="Radiant logo"
-        width={240}
-        height={48}
-        className="h-12 w-auto"
-        src="/images/logo.png"
-        alt="Radiant logo"
-        width={180}
-        height={48}
-        className="h-full w-auto mix-blend-multiply opacity-90"
-        priority={false}
+        width={200}
+        height={60}
+        className="h-[60px] w-auto"
       />
     </motion.div>
   )
