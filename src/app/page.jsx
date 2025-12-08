@@ -305,7 +305,7 @@ function IngredientDetailSection() {
             <button
               key={index}
               type="button"
-              aria-label={`Go to ${index === 0 ? 'Our Ingredients' : 'Benefits'} block`}
+              aria-label={`Go to ${index === 0 ? 'Benefits' : 'Why our formula works'} block`}
               className={`size-3 rounded-full transition ${
                 activeSlide === index ? 'bg-indigo-600' : 'bg-gray-300'
               }`}
@@ -320,6 +320,47 @@ function IngredientDetailSection() {
               className="flex w-full transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${activeSlide * 100}%)` }}
             >
+              <div className="w-full flex-shrink-0 px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+                  <div className="space-y-4 text-base/7 text-gray-600">
+                    <p className="text-base/7 font-semibold uppercase tracking-[0.2em] text-indigo-600">Benefits</p>
+                    <h3 className="text-3xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-4xl">
+                      What you feel on your skin
+                    </h3>
+                    <p>
+                      Designed for daily wear, MimosaShea floods the skin with cushiony moisture, antioxidants, and calming
+                      botanicals. Swipe to see the full list of benefits you can expect from the blend.
+                    </p>
+                    <div className="rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-emerald-50 p-5 ring-1 ring-black/5">
+                      <p className="text-sm/6 font-semibold text-indigo-700">Texture &amp; finish</p>
+                      <p className="mt-2 text-lg/8 font-semibold text-gray-950">
+                        Silky, fast-absorbing moisture with a soft-focus glow.
+                      </p>
+                      <p className="mt-2 text-sm/6 text-gray-600">
+                        Clinically gentle on sensitive skin with non-comedogenic oils and barrier-supporting humectants.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {benefits.map((benefit) => (
+                      <div
+                        key={benefit.name}
+                        className="group flex items-start gap-3 rounded-3xl bg-white/80 p-4 shadow-md shadow-indigo-50 ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-100"
+                      >
+                        <div className="flex size-12 items-center justify-center rounded-2xl bg-emerald-50 ring-1 ring-emerald-100">
+                          <benefit.icon className="text-emerald-900" />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-base font-semibold text-gray-950">{benefit.name}</p>
+                          <p className="text-sm/6 text-gray-600">{benefit.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <div className="w-full flex-shrink-0 px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
                 <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-16">
                   <div className="order-2 space-y-6 text-base/7 text-gray-600 lg:order-1 lg:max-w-xl">
@@ -400,47 +441,6 @@ function IngredientDetailSection() {
                         <dt className="text-sm/6 text-gray-500">Peptide complex support for firmness</dt>
                       </div>
                     </dl>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full flex-shrink-0 px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
-                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
-                  <div className="space-y-4 text-base/7 text-gray-600">
-                    <p className="text-base/7 font-semibold uppercase tracking-[0.2em] text-indigo-600">Benefits</p>
-                    <h3 className="text-3xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-4xl">
-                      What you feel on your skin
-                    </h3>
-                    <p>
-                      Designed for daily wear, MimosaShea floods the skin with cushiony moisture, antioxidants, and calming
-                      botanicals. Swipe to see the full list of benefits you can expect from the blend.
-                    </p>
-                    <div className="rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-emerald-50 p-5 ring-1 ring-black/5">
-                      <p className="text-sm/6 font-semibold text-indigo-700">Texture &amp; finish</p>
-                      <p className="mt-2 text-lg/8 font-semibold text-gray-950">
-                        Silky, fast-absorbing moisture with a soft-focus glow.
-                      </p>
-                      <p className="mt-2 text-sm/6 text-gray-600">
-                        Clinically gentle on sensitive skin with non-comedogenic oils and barrier-supporting humectants.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {benefits.map((benefit) => (
-                      <div
-                        key={benefit.name}
-                        className="group flex items-start gap-3 rounded-3xl bg-white/80 p-4 shadow-md shadow-indigo-50 ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-100"
-                      >
-                        <div className="flex size-12 items-center justify-center rounded-2xl bg-emerald-50 ring-1 ring-emerald-100">
-                          <benefit.icon className="text-emerald-900" />
-                        </div>
-                        <div className="space-y-1">
-                          <p className="text-base font-semibold text-gray-950">{benefit.name}</p>
-                          <p className="text-sm/6 text-gray-600">{benefit.description}</p>
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>
