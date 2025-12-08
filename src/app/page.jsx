@@ -5,7 +5,6 @@ import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
 import { Link } from '@/components/link'
-import { LogoCloud } from '@/components/logo-cloud'
 import { Navbar } from '@/components/navbar'
 import { Testimonials } from '@/components/testimonials'
 import { Heading } from '@/components/text'
@@ -190,16 +189,8 @@ export default function Home() {
       </FadeInSection>
       <main>
         <FadeInSection>
-          <Container className="mt-10">
-            <LogoCloud />
-          </Container>
-        </FadeInSection>
-        <FadeInSection>
           <IngredientSection />
         </FadeInSection>
-        <Container className="mt-10">
-          <LogoCloud />
-        </Container>
       </main>
       <FadeInSection>
         <Testimonials />
