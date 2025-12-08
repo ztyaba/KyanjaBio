@@ -7,7 +7,6 @@ import { Gradient } from '@/components/gradient'
 import { AnimatedNumber } from '@/components/animated-number'
 import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
-import { Testimonials } from '@/components/testimonials'
 import { Heading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
@@ -296,9 +295,6 @@ export default function Home() {
           <IngredientDetailSection />
         </FadeInSection>
       </main>
-      <FadeInSection>
-        <Testimonials />
-      </FadeInSection>
       <FadeInSection>
         <Footer />
       </FadeInSection>
