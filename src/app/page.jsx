@@ -46,15 +46,24 @@ function Hero() {
                 </Button>
               </div>
               <dl className="mt-12 grid grid-cols-1 gap-6 text-sm font-semibold text-gray-950 sm:grid-cols-3">
-                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                <div
+                  className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset animate-fade-in-right"
+                  style={{ animationDelay: '0s' }}
+                >
                   <dt className="text-sm/6 text-gray-600">Dermatologist tested</dt>
                   <dd className="mt-1 text-lg">Clinically gentle</dd>
                 </div>
-                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                <div
+                  className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset animate-fade-in-right"
+                  style={{ animationDelay: '0.15s' }}
+                >
                   <dt className="text-sm/6 text-gray-600">Finish</dt>
                   <dd className="mt-1 text-lg">Radiant, non-greasy</dd>
                 </div>
-                <div className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset">
+                <div
+                  className="rounded-2xl bg-white/50 p-4 shadow-xs ring-1 ring-black/5 ring-inset animate-fade-in-right"
+                  style={{ animationDelay: '0.3s' }}
+                >
                   <dt className="text-sm/6 text-gray-600">Fragrance</dt>
                   <dd className="mt-1 text-lg">Mimosa + neroli</dd>
                 </div>
